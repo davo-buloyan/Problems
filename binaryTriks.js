@@ -25,18 +25,17 @@ function setByte(num, pos, reset = false) {
 
 class bitArray {
   constructor(length) {
-    this.backingArray = Array.from({ length: Math.ceil(length / 32) }, () => 0);
-    this.length = length;
+    this.bitsArray = Array.from({ length: Math.ceil(length / 32) }, () => 0);
   }
   get(n) {
-    console.log((this.backingArray[n/32|0] & 1 << n % 32)!= 0 ? 1 : 0);
-      return (this.backingArray[n/32|0] & 1 << n % 32)!= 0 ? 1 : 0
+    console.log((this.bitsArray[n/32|0] & 1 << n % 32)!= 0 ? 1 : 0);
+      return (this.bitsArray[n/32|0] & 1 << n % 32)!= 0 ? 1 : 0
   }
   set(n, bit) {
     if (bit == 1) {
-      this.backingArray[(n / 32) | 0] |= 1 << n % 32;
+      this.bitsArray[(n / 32) | 0] |= 1 << n % 32;
     } else if (bit == 0) {
-      this.backingArray[(n / 32) | 0] &= ~(1 << n % 32);
+      this.bitsArray[(n / 32) | 0] &= ~(1 << n % 32);
     }
   }
 
